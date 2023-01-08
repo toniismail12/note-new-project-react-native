@@ -1,6 +1,7 @@
 ## create new project react native
 <ul>
   <li>Setup React Native CLI</li>
+  <li>npx react-native init AwesomeProject</li>
 </ul>
 
 ## install package
@@ -18,3 +19,24 @@
   <li>npm install react-native-svg</li>
   <li>npm install react-native-svg-transformer</li>
 </ul>
+
+### update metro.config.js with it
+
+```javascript
+const { getDefaultConfig } = require("metro-config");
+
+module.exports = (async () => {
+  const {
+    resolver: { sourceExts, assetExts }
+  } = await getDefaultConfig();
+  return {
+    transformer: {
+      babelTransformerPath: require.resolve("react-native-svg-transformer")
+    },
+    resolver: {
+      assetExts: assetExts.filter(ext => ext !== "svg"),
+      sourceExts: [...sourceExts, "svg"]
+    }
+  };
+})();
+```
