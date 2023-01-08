@@ -40,3 +40,9 @@ module.exports = (async () => {
   };
 })();
 ```
+
+### react native command run project
+<ul>
+  <li>npx react-native start</li>
+  <li>npx react-native run-android</li>
+</ul>
